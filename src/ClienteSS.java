@@ -35,3 +35,24 @@ public class ClienteSS {
 		return id;
 	}
 
+public String enviarAServidor(String pMensaje) throws IOException {
+		out.println(pMensaje);
+		System.out.println("Mensaje enviado		:	  " + pMensaje);
+		String respuesta = in.readLine();
+		System.out.println("Respuesta servidor	:	  " + respuesta);
+		
+		return respuesta;
+	}
+	
+	public void enviarMensajeSinRespuesta(String pMensaje) throws IOException {
+		out.println(pMensaje);	
+		System.out.println("Mensaje enviado		:	  " + pMensaje);
+	}
+	
+	public void inicilizarComunicacion() throws IOException {
+		if(!enviarAServidor("HOLA").equals("OK"))
+			System.err.println("ERROR respuesta no espereada: saludo");
+		if(!enviarAServidor("ALGORITMOS:AES:RSA:HMACSHA1").equals("OK"))
+			System.err.println("ERROR respuesta no espereada: algoritmos");
+		
+	}
