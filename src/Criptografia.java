@@ -90,6 +90,13 @@ public class Criptografia {
 		}
 	}
 	
+    public static byte[] generarHmac(Key llave, String texto) throws NoSuchAlgorithmException, InvalidKeyException {
+		Mac mac = Mac.getInstance("HMACSHA1");
+	    mac.init(llave);
+	    
+	    byte[] bytes = mac.doFinal(texto.getBytes());
+	    return bytes;
+	}
 
 	
 
